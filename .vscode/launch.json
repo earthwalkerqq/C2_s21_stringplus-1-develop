@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/ilyaassanov/Desktop/minhayProject/C2_s21_stringplus-1-develop/code-samples",
+      "program": "/Users/ilyaassanov/Desktop/minhayProject/C2_s21_stringplus-1-develop/code-samples/build/Debug/outDebug"
+    }
+  ]
+}
