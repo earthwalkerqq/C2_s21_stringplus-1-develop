@@ -1,14 +1,12 @@
 #include "s21_string.h"
 
-char *strchr(const char *buffer, int ch) {
-    int i = 0;
+char *s21_strchr(const char *buffer, int ch) {
     char *res = NULL;
-    while (buffer[i] != '\0') {
+    for (int i = 0; buffer[i]; i++) {
         if ((int)buffer[i] == ch) {
-            res = buffer + i;
+            res = (char *)buffer + i;
             break;
         }
-        i++;
     }
     return res;
 }

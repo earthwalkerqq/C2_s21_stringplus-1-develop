@@ -1,6 +1,6 @@
 #include "s21_string.h"
 
-void *memcpy(void *buffer, void *src, size_t count) {
+void *s21_memcpy(void *buffer, void *src, size_t count) {
     unsigned char *Cbuffer = (unsigned char *)buffer;
     unsigned char *Csrc = (unsigned char *)src;
     if ((uintptr_t)Csrc % sizeof(unsigned long) == 0
@@ -15,7 +15,7 @@ void *memcpy(void *buffer, void *src, size_t count) {
         Cbuffer = (unsigned char *)Lbuffer;
         Csrc = (unsigned char *)Lsrc;
     }
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < (int)count; i++) {
         Cbuffer[i] = Csrc[i];
     }
     return buffer;

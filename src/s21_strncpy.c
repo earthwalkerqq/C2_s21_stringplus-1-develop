@@ -1,10 +1,8 @@
 #include "s21_string.h"
 
-char *strncpy(char *buffer, const char *src, size_t count) {
-    int i = 0;
-    while (src[i] != '\0' && i != count) {
+char *s21_strncpy(char *buffer, const char *src, size_t count) {
+    for (int i = 0; src[i] && i != (int)count; i++) {
         buffer[i] = src[i];
-        i++;
     }
     return buffer;
 }
