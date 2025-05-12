@@ -9,6 +9,13 @@ char *s21_strtok(char *str, const char *delim) {
     if (last == NULL) {
         return NULL;
     }
+    token = last;
+    int i;
+    for (int j = 0; delim[j]; j++) {
+        for (i = 0; last[i] != delim[j] && last[i]; i++);
+        
+    }
+
     while (*last && s21_strchr(delim, *last) != NULL) {
         last++;
     }
