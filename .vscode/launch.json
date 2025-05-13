@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/ilyaassanov/Desktop/minhayProject/C2_s21_stringplus-1-develop/code-samples",
-      "program": "/Users/ilyaassanov/Desktop/minhayProject/C2_s21_stringplus-1-develop/code-samples/build/Debug/outDebug"
+      "cwd": "/Users/ilyaassanov/Desktop/minhayProject/C2_s21_stringplus-1-develop/src",
+      "program": "/Users/ilyaassanov/Desktop/minhayProject/C2_s21_stringplus-1-develop/src/build/Debug/outDebug"
     }
   ]
 }

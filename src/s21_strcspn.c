@@ -1,15 +1,14 @@
 #include "s21_string.h"
 
 int s21_strcspn(const char *src, const char *pool) {
-    int res = -1;
-    int j;
+    int res = 0;
     for (int i = 0; pool[i]; i++) {
-        for (j = 0; src[j]; j++) {
+        for (int j = 0; src[j]; j++) {
             if (src[j] == pool[i]) {
-                res = j;
+                res = (!j) ? j : j + 1;
                 break;
             }
         }
     }
-    return (res == -1) ? j + 1 : res;
+    return res;
 }

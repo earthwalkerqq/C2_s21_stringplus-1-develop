@@ -258,10 +258,10 @@
 
 char *s21_strerror(int errnum) {
     char *res = NULL;
-    if (errnum < 0 || errnum >= LAST_ERR) {
+    if (errnum < 0 || errnum > LAST_ERR) {
         sprintf(res, "Unknown error: %d", errnum);
     } else {
-        res = (char *)s21_error[errnum];
+        res = (char *)s21_error[errnum - 1];
     }
     return res;
 }
