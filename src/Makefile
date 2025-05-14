@@ -4,37 +4,39 @@ MAC_FLAGS=-lcheck -lm
 LINUX_FLAGS=-lcheck -lm -lrt -lpthread -lsubunit
 GCOV_FLAGS=-fprofile-arcs -ftest-coverage
 
+
 FILES=$(wildcard s21_*.c)
-OBJ=$(patsubst %o, %o, $(patsubst %.c,%.o,$(FILES)))
+OBJ=$(patsubst %.c,%.o,$(FILES))
 TEST_FILES = $(wildcard tests/test_*.c)
-USERNAME=$(shell whoami)
 
 MYLIB = s21_string.a
 
 OS := $(shell uname -s)
 
-ifeq ($(OS),Darwin)
+ifeq ($(OS), Darwin)
+    CHECK_PATH=$(shell brew --prefix check)
 	OPEN=open
-endif
-ifeq ($(OS),Linux)
+else
+    CHECK_PATH=/usr/lib/check
 	OPEN=xdg-open
 endif
 
-all: s21_string.a
 
-.PHONY: all test memory_test s21_string.a gcov_report clean rebuild
+all: $(MYLIB)
 
-s21_string.a: $(FILES)
+.PHONY: all test $(MYLIB) gcov_report clean rebuild
+
+$(MYLIB): $(FILES)
 	$(CC) -c $(FLAGS) $(FILES)
 	ar rc $@ $(OBJ)
 	ranlib $@
 	rm -rf *.o
 
-test: s21_string.a
+test: $(MYLIB)
 ifeq ($(OS),Darwin)
-	$(CC) $(FLAGS) $(TEST_FILES) $< -o test $(MAC_FLAGS)
+	$(CC) $(FLAGS) -I$(CHECK_PATH)/include $(TEST_FILES) $< -o test $(MAC_FLAGS)
 else
-	$(CC) $(FLAGS) $(TEST_FILES) $< -o test $(LINUX_FLAGS)
+	$(CC) $(FLAGS) -I$(CHECK_PATH)/include $(TEST_FILES) $< -o test $(LINUX_FLAGS)
 endif
 	./test
 

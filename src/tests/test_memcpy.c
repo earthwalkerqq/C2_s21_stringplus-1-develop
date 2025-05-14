@@ -8,6 +8,15 @@ START_TEST(test_memcpy_1) {
 
 START_TEST(test_memcpy_2) {
     char buffer[15];
-    ck_assert_pnt_eq(s21_memcpy(buffer, "earthwalker", 5), buffer);
+    ck_assert_ptr_eq(s21_memcpy(buffer, "earthwalker", 5), buffer);
     ck_assert_str_eq(buffer, "earth");
 } END_TEST
+
+Suite *test_s21_memcpy(void) {
+    Suite *s = suite_create("s21_memcpy");
+    TCase *tc = tcase_create(" test_memcpy ");
+    tcase_add_test(tc, test_memcpy_1);
+    tcase_add_test(tc, test_memcpy_2);
+    suite_add_tcase(s, tc);
+    return s;
+}
